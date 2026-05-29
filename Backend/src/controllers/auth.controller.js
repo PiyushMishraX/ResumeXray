@@ -1,4 +1,6 @@
 const userModel = require("../models/user.model")
+const bcrypt = require('bcryptjs')
+const jwt = require("jsonwebtoken")
 
 /**
  * @name registerUserController
@@ -38,7 +40,36 @@ async function registerUserController( req, res){
         }
     }
 
-    
+    const hash = await bcrypt.hash(password, 10)
+
+    const userr = await userModel.create({
+        username, // username is username
+        email, // email is email
+        password: hash, // password stored as hash
+    })
+
+    const token = jwt.sign(
+
+        {id: user._id, username: user.username},
+        process.env.JWT_SECRET,
+        { expiresIn: "1d"},
+    )
+
+    res.cookie("token", token)
+
+    // 201--> new resource(user) create [in backend language the use is a resource too]
+    res.status(201).json({
+        message: "User registered successfully",
+        user:{
+            id: user._id,
+            username: user.username,
+            email: user.email
+        }
+        // token --> not sending bcz already saving in cookies
+        // we may send it if it was mobile application not web
+
+    })
+
 }
 
 

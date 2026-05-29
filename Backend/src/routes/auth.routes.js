@@ -3,7 +3,7 @@
 // const { Router } = reuqire('express')
 // const authRouter = Router() // using destructured Router instead of express.Router
 
-const express = reuqire('express')
+const express = require('express')
 const authController = require('../controllers/auth.controller')
 
 const authRouter = express.Router()

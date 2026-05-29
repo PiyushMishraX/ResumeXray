@@ -18,3 +18,5 @@ and cookie-parser for reading and writing(set in cookies) in cookies
 creating script -->
 "dev": "npx nodemon server.js" 
 run using --> npm run dev
+
+jwt secrets --> jwt secrets.com
