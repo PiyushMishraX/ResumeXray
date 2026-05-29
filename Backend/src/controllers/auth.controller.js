@@ -100,11 +100,26 @@ async function loginUserController( req, res){
         })
     }
 
-    
+    const token = jwt.sign(
+        {id: user._id, username: user.username},
+        process.env.JWT_SECRET,
+        { expiresIn: "1d"},
+    )
+
+    res.cookie("token", token)
+    res.status(200).json({
+        message: "User loggedIn successfully",
+        user:{
+            id: user._id,
+            username: user.username,
+            email: user.email
+        }
+    })
      
 }
 
 // module.exports = {}// empty object
 module.exports = {
-    registerUserController
+    registerUserController,
+    loginUserController
 }
