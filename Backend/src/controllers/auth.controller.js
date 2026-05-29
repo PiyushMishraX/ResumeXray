@@ -73,6 +73,37 @@ async function registerUserController( req, res){
 }
 
 
+/**
+ * @name loginUserController
+ * @description login a new user, expects email and password in request body
+ * @access Public
+ */
+async function loginUserController( req, res){
+
+    const { email , password } = req.body 
+
+    const user = await userModel.findOne({
+        email
+    })
+
+    if(!user){
+        return res.status(400).json({
+            message: "Invalid email or password",
+        })
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+
+    if(!isPasswordValid ){
+        return res.status(400).json({
+            message: "Invalid email or password",
+        })
+    }
+
+    
+     
+}
+
 // module.exports = {}// empty object
 module.exports = {
     registerUserController
