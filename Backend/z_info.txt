@@ -1,6 +1,20 @@
+packages intalled till now -->
+ran --> npm init -y ( intiate node js application )
+1. npm i express mongoose dotenv
+2. npm i bcryptjs jsonwebtoken cookie-parser
+ 
+
 nect the user register ( storing the user in db format ) and authentication , login api's
 
 JSDoc comments--> long term help breif descrption, functions , controllers , util functions etc ( and looks good in code)
 IDES like vs code creates documentation from them
 
 The $or operator performs a logical OR operation on an array of one or more expressions, selecting documents that satisfy at least one of the specified conditions.
+
+bcryptjs for hashing 
+jsonwebtoken to create the jwt token  for storing in cookie
+and cookie-parser for reading and writing(set in cookies) in cookies
+
+creating script -->
+"dev": "npx nodemon server.js" 
+run using --> npm run dev
