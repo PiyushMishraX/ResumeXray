@@ -6,7 +6,8 @@ async function connectToDB() {
         console.log("Connected to Database");
         
     } catch (err) {
-        console.log(err);
+        console.log(err); // shortcut vs code to write console.log --> clg  ( or log but clg is more targated)
+        
         // console.log("error");
         
         
