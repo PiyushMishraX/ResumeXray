@@ -4,6 +4,7 @@
 // const authRouter = Router() // using destructured Router instead of express.Router
 
 const express = reuqire('express')
+const authController = require('../controllers/auth.controller')
 
 const authRouter = express.Router()
 
@@ -14,6 +15,6 @@ const authRouter = express.Router()
  * @description Register a new user
  * @access Public
  */
-authRouter.post("/register", )
+authRouter.post("/register", authController.registerUserController )
 
 module.exports = authRouter;

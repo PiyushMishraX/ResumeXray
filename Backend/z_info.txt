@@ -1,3 +1,4 @@
 nect the user register ( storing the user in db format ) and authentication , login api's
 
 JSDoc comments--> long term help breif descrption, functions , controllers , util functions etc ( and looks good in code)
+IDES like vs code creates documentation from them
