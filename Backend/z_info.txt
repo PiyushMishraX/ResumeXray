@@ -2,3 +2,5 @@ nect the user register ( storing the user in db format ) and authentication , lo
 
 JSDoc comments--> long term help breif descrption, functions , controllers , util functions etc ( and looks good in code)
 IDES like vs code creates documentation from them
+
+The $or operator performs a logical OR operation on an array of one or more expressions, selecting documents that satisfy at least one of the specified conditions.
