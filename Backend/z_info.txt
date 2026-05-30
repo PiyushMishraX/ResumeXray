@@ -20,3 +20,11 @@ creating script -->
 run using --> npm run dev
 
 jwt secrets --> jwt secrets.com
+
+logout --> not only remove token from cookie but also
+balck list the tokenfor now we are doing it with mongo database , but redis is best  , redis throuput in high
+
+Throughput is the measure of the amount of data, work, or goods successfully processed or transmitted by a system within a specific period of time.  It serves as a critical metric for evaluating the real-world performance and efficiency of systems across various domains. 
+
+
+WE use redis for token black listing in production or a batabase with high Throughput

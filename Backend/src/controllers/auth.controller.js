@@ -17,13 +17,13 @@ async function registerUserController( req, res){
         })
     }
  
-    const ifUserAlreadyExists = await userModel.findOne({
+    const isUserAlreadyExists = await userModel.findOne({
         // $or can have 1 or more conditions in the array each object inside is a condition
         // the $or returns that after any of the condition is met 
         $or: [ {username} , {email}]
     })
 
-    if(ifUserAlreadyExists) {
+    if(isUserAlreadyExists) {
         /* isUserAlreadyExists.username == username <-- better message condition */
         // return res.status(400).json({
         //     message: "Account already exists with this email address or username",
@@ -42,7 +42,7 @@ async function registerUserController( req, res){
 
     const hash = await bcrypt.hash(password, 10)
 
-    const userr = await userModel.create({
+    const user = await userModel.create({
         username, // username is username
         email, // email is email
         password: hash, // password stored as hash
@@ -53,7 +53,7 @@ async function registerUserController( req, res){
         {id: user._id, username: user.username},
         process.env.JWT_SECRET,
         { expiresIn: "1d"},
-    )
+    ) // tokens are unique because they have issued at  timestamps which adds the unique time for the user , token generation 
 
     res.cookie("token", token)
 
