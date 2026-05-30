@@ -108,6 +108,8 @@ async function loginUserController( req, res){
     )
 
     res.cookie("token", token)
+    // res.cookie("testCookie", "hello") , testing cookieClear
+
     res.status(200).json({
         message: "User loggedIn successfully",
         user:{
@@ -133,7 +135,8 @@ async function logoutUserController( req, res){
         // add token to balck list model
     }
 
-    res.clearCookie()
+    // res.clearCookie() // clears everything but not working
+    res.clearCookie("token") // clears/remove the token , have to manually write what to remove , ( if waht to remove token write token )
 
     res.status(200).json({
         message: "User logged out successfully"
