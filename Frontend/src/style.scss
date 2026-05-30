@@ -1,3 +1,5 @@
+@use "./style/button.scss" ; // now no need to import button.css seperately to individual file
+
 * {
     margin: 0%;
     padding: 0%;
