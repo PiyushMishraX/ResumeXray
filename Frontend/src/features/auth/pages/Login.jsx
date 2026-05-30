@@ -3,6 +3,7 @@
 
 
 import React from 'react'
+import "../auth.form.scss"
 
 const Login = () => {
   return (
@@ -18,7 +19,7 @@ const Login = () => {
                 <input type="email" id='email' name='email' placeholder='Enter email address'/>
             </div>
             <div className="input-group">
-                <label htmlFor='password'>Email</label>
+                <label htmlFor='password'>Password</label>
                 <input type="password" id='password' name='password' placeholder='Enter password'/>
             </div>
 
