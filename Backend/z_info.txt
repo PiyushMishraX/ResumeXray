@@ -28,3 +28,6 @@ Throughput is the measure of the amount of data, work, or goods successfully pro
 
 
 WE use redis for token black listing in production or a batabase with high Throughput
+
+
+In JSDoc comments, @access public explicitly marks a symbol as intended for general use and public API exposure.  While JSDoc treats all symbols as public by default, using this tag clarifies developer intent without changing the symbol’s actual scope or visibility. It is functionally equivalent to the @public tag and ensures the member appears in generated documentation unless explicitly hidden by other tags like @private or @ignore.
