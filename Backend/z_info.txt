@@ -31,3 +31,6 @@ WE use redis for token black listing in production or a batabase with high Throu
 
 
 In JSDoc comments, @access public explicitly marks a symbol as intended for general use and public API exposure.  While JSDoc treats all symbols as public by default, using this tag clarifies developer intent without changing the symbol’s actual scope or visibility. It is functionally equivalent to the @public tag and ensures the member appears in generated documentation unless explicitly hidden by other tags like @private or @ignore.
+
+jwt_token can only be opened by server ( only server know whats in it)
+and bcrypt password can only be opened by user ( only user knows whats in it)

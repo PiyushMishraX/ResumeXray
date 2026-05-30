@@ -33,5 +33,15 @@ authRouter.post("/login", authController.loginUserController )
  */
 authRouter.get("/logout", authController.logoutUserController )
 
+// have to create middleware yo check user validitity , token validity , token blacklisting and getting user info 
+// creating getme api to get requesting users details from the database for this we need the middleware also to tell if user looged in or not or which user is logged in
+// access private because this api is for server functions
+
+/**
+ * @route GET /api/auth/get-me
+ * @description get the current logged in user-details
+ * @access private
+ */
+authRouter.get("/get-me", authController.logoutUserController )
 
 module.exports = authRouter;
