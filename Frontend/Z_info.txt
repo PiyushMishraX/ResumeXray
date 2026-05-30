@@ -11,3 +11,6 @@ set up react router dom to see what we see at /login ,/register etc ( to show di
 
 folder structure -->
 feature spaced folder structure
+first is login register etc
+second is ai related
+( amazon feature based --> user, products)
