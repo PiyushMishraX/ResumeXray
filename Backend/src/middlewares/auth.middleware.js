@@ -14,7 +14,7 @@ function authUser(req, res, next) {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-        // if we get data than add that in base request
+        // if we get data than add that in base request // created the user property in request
         req.user = decoded
     } catch (err) {
         return res.status(401).json({
