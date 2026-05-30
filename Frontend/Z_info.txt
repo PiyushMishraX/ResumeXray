@@ -1,3 +1,13 @@
 Cammands ran ( package installation ) --> 
 1. npm create vite@latest .
-2. 
+2. npm i sass
+3. npm i react-router
+
+We will use scss intall it's package
+
+good ui/ux do not have pure black or pure white
+
+set up react router dom to see what we see at /login ,/register etc ( to show different ui we use this package)
+
+folder structure -->
+feature spaced folder structure
