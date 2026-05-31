@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router'
 
 const Register = () => {
+
+  const navigate = useNavigate() // to create navigation between forms
 
   const handleSubmit = (e) =>{
         e.preventDefault() // stop the reload
@@ -9,6 +12,7 @@ const Register = () => {
   return (
     <main>
     <div className="form-container">
+        <h1>Register</h1>
 
         <form onSubmit={handleSubmit} > 
 
@@ -29,7 +33,7 @@ const Register = () => {
 
         </form>
 
-        
+        <p>Already have an account? <Link to={"/login"}>Login</Link></p>
     </div>
 
     </main>
