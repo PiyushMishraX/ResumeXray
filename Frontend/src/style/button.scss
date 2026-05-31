@@ -9,10 +9,20 @@
     border-radius: 1rem;
     cursor: pointer;
 
+    transition: all 0.3s ease-in-out ;
+
     // &.class without the space means that the parent and .class should be in a same element not chained inside the parent ( & <-- with space means html is inside the parent not with the parent )
     // & is parent selector in modern css / scss
     &.primary-button {
         color: white;
         background-color: #d60349;
     }
+
+    &:active {
+        // transform: scale(1.1); // on click feed back
+        transform: scale(0.9); // for ux this small things are good
+    }
 }
+
+
+// this type of comments can be used in scss unlike normal css

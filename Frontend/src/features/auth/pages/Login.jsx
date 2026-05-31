@@ -6,12 +6,17 @@ import React from 'react'
 import "../auth.form.scss"
 
 const Login = () => {
+
+    const handleSubmit = (e) =>{
+        e.preventDefault() // stop the reload
+    }
+
   return (
     <main> {/* every page iside the main block */}
     <div className="form-container">
         <h1>Login</h1>
 
-        <form > 
+        <form onSubmit={handleSubmit} > 
             {/* actions written from js */}
 
             <div className="input-group">
