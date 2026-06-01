@@ -2,6 +2,8 @@ Cammands ran ( package installation ) -->
 1. npm create vite@latest .
 2. npm i sass
 3. npm i react-router
+4. npm i axios
+
 
 We will use scss intall it's package
 
@@ -42,3 +44,5 @@ auth based folder structure
 4. API layer ( apna frontend backend se kaise communicate karega )  ( for communivation with backend)
 => services folder
     => auth.api.js ( frontend apni 4 api se kaise interact karega)
+
+    we create api layer first 
