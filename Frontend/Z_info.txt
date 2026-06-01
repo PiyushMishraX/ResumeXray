@@ -46,3 +46,8 @@ auth based folder structure
     => auth.api.js ( frontend apni 4 api se kaise interact karega)
 
     we create api layer first 
+
+
+// ui and other layers do not have any direct code communication with backend
+
+the responsibilites of a layer do not get shared bewtween layers , else the project is done for in the future 
