@@ -14,3 +14,29 @@ feature spaced folder structure
 first is login register etc
 second is ai related
 ( amazon feature based --> user, products)
+
+
+in react architecture we create total four layers -->
+1. UI layer
+2. Hook layer
+3. State layer
+4. API layer ( frontend ke behalf mai backend se communicate karti hai )
+
+
+Proper folder structure of frontend too ( it is good for production )
+auth based folder structure
+
+// folders under layers
+1. UI layer ( user ko kya dikhega and navigation handle)
+=> component and pages
+
+2. Hook layer ()
+=> hooks folder
+
+3. State layer
+=> file -> auth.context.jsx
+=> ai.context.jsx ( file similar to this)
+
+4. API layer ( apna frontend backend se kaise communicate karega ) 
+=> services folder
+    => auth.api.js ( frontend apni 4 api se kaise interact karega)

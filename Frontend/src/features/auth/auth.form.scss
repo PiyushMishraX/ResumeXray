@@ -37,4 +37,10 @@ main {
             border-radius: 0.75rem;
         }
     }
+
+    a { // modififying the <Link>
+        color: #d60349; // it is our primary colour
+        text-decoration: none; 
+
+    }
 }
