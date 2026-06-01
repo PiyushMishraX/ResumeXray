@@ -31,12 +31,14 @@ auth based folder structure
 => component and pages
 
 2. Hook layer ()
+--> ( for managing state and api layers )
 => hooks folder
 
-3. State layer
-=> file -> auth.context.jsx
+3. State layer ( user ka jo data frontend se jo dikhna hai , use data ko jo store kar rahi ,  data ke state ko jo manage kar rahi hai wo part)
+--> ( data store karne ke liye state layer ka use karte hai,  in short)
+=> file -> auth.context.jsx 
 => ai.context.jsx ( file similar to this)
 
-4. API layer ( apna frontend backend se kaise communicate karega ) 
+4. API layer ( apna frontend backend se kaise communicate karega )  ( for communivation with backend)
 => services folder
     => auth.api.js ( frontend apni 4 api se kaise interact karega)
