@@ -38,7 +38,8 @@ auth based folder structure
 
 3. State layer ( user ka jo data frontend se jo dikhna hai , use data ko jo store kar rahi ,  data ke state ko jo manage kar rahi hai wo part)
 --> ( data store karne ke liye state layer ka use karte hai,  in short)
-=> file -> auth.context.jsx 
+=> file /files -> 
+=> auth.context.jsx 
 => ai.context.jsx ( file similar to this)
 
 4. API layer ( apna frontend backend se kaise communicate karega )  ( for communivation with backend)
@@ -46,8 +47,43 @@ auth based folder structure
     => auth.api.js ( frontend apni 4 api se kaise interact karega)
 
     we create api layer first 
+    then state layer 
+    then hook layer
+
+
+ORDER of layer in react architectures -->
+1. UI layer  --> 2. API layer --> 3. State layer --> 4. Hook layer
 
 
 // ui and other layers do not have any direct code communication with backend
 
 the responsibilites of a layer do not get shared bewtween layers , else the project is done for in the future 
+
+state layer , 
+user logged in hai to uska data store karna hai
+Api ka data aane mai time lagata hai usme lasding state dikhna bhi state layer ka kaam hai
+
+The React Context API setup involves three core steps: creating the context, providing the state, and consuming the value. 1.  Create Context: Use createContext() to define a context object.  2. Create Provider: Build a component that holds the state (using useState or useReducer) and renders <Context.Provider value={...}> to wrap child components. 3.  Consume Context: Use the useContext() hook in any descendant component to access the provided data. 
+
+import React, { createContext, useState, useContext } from 'react';
+
+// 1. Create the context
+const ThemeContext = createContext();
+
+// 2. Create the Provider component
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
+  
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// Export the context for consumption
+export default ThemeContext;
