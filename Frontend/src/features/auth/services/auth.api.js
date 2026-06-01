@@ -51,3 +51,28 @@ export async function login ({ email , password}) {
 
 }
 
+export async function logout(){
+  try {
+    const response = await axios.get("http://localhost:3000/api/auth/logout", {
+      withCredentials: true
+    }) // this api do not need anything so no need to give anything 
+    return response.data
+  } catch (err) {
+    console.log(err)    
+  }
+}
+
+export async function getMe(){
+
+  try {
+    const response = await axios.get("http://localhost:3000/api/auth/getme", {
+      withCredentials: true
+    })
+    return response.data
+    
+  } catch (err) {
+    
+  }
+
+  
+}
