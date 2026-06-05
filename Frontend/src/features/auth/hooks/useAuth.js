@@ -41,3 +41,5 @@ export const useAuth = ()=>{
     
 
 }
+
+// useAuth is COsutom Hook
