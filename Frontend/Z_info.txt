@@ -87,3 +87,5 @@ export const ThemeProvider = ({ children }) => {
 
 // Export the context for consumption
 export default ThemeContext;
+
+hook layer manages the sate and pai layer 
