@@ -93,3 +93,5 @@ hook layer manages the sate and pai layer
 CORS error --> backend normal communication error
 // we do not set loading always true even when the error occurs we use try and catch in the hook layer too
 and we have to fix cors error in backend
+
+Navigation from one page to another is written in ui layer 

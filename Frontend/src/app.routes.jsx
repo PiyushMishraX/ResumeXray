@@ -8,11 +8,11 @@ import {Navigate } from "react-router"
 //  creating dommy pages not exact ui
 //  router creater with two routes
 export const router = createBrowserRouter([
-    {
-        path: "/", // for now set "/" route to login
-        element: <Navigate to="/login" replace />
+    // {
+    //     path: "/", // for now set "/" route to login
+    //     element: <Navigate to="/login" replace />
 
-    },
+    // },
     {
         path: "/login",
         element:<Login />
@@ -21,5 +21,9 @@ export const router = createBrowserRouter([
         path: "/register",
         element:<Register />
     },
+    {
+        path: "/",
+        element: <h1>Home Page</h1> // dummy route for testing the login navigation etc
+    }
 ])
 

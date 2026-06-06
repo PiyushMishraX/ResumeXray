@@ -18,7 +18,12 @@ const Login = () => {
 
     const handleSubmit = async (e) =>{
         e.preventDefault() // stop the reload
-        handleLogin({email, password}) // handle login handles all the logic/business logic and not have to write it in ui
+        // handleLogin({email, password}) // handle login handles all the logic/business logic and not have to write it in ui
+
+        await handleLogin({email, password}) // ui layer handles navigation after login successful // then navigate user to home page
+        navigate('/')
+
+
     }
 
     if(loading) {
