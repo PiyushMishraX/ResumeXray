@@ -9,15 +9,20 @@ import { useAuth } from '../hooks/useAuth'
 
 const Login = () => {
 
-    const { laoding, handleLogin } = useAuth()
+    const { loading, handleLogin } = useAuth()
 
     const navigate = useNavigate()
 
     const [ email, setEmail ] = useState("")
     const [ password, setPassword ] = useState("")
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault() // stop the reload
+        handleLogin({email, password}) // handle login handles all the logic/business logic and not have to write it in ui
+    }
+
+    if(loading) {
+        return ( <main><h1>Loading........</h1></main>)
     }
 
   return (

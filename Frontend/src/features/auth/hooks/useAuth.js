@@ -36,7 +36,7 @@ export const useAuth = ()=>{
         setLoading(false)
     }
 
-    return { user, laoding ,handleRegister, handleLogin, handleLogout  }
+    return { user, loading ,handleRegister, handleLogin, handleLogout  }
 
     
 
