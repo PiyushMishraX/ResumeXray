@@ -1,10 +1,15 @@
 const express = require("express")
 const cookieParser = require("cookie-parser")
+const cors = require("cors")
 
 const app = express();
 
 app.use(express.json()) // middleware allowing us to read the data coming on request.body
 app.use(cookieParser()) // middleware to read the cookies
+app.use(cors({
+    origin: "http://localhost:5173", // orign for now is localhost
+    credentials: true // credentials true to handle cookies data
+}))
 
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
