@@ -4,6 +4,7 @@ import Register from "./features/auth/pages/Register"
 import App from "./App"
 
 import {Navigate } from "react-router"
+import Protected from "./features/auth/components/Protected"
 
 //  creating dommy pages not exact ui
 //  router creater with two routes
@@ -21,9 +22,13 @@ export const router = createBrowserRouter([
         path: "/register",
         element:<Register />
     },
+    // {
+    //     path: "/",
+    //     element: <h1>Home Page</h1> // dummy route for testing the login navigation etc
+    // }
     {
         path: "/",
-        element: <h1>Home Page</h1> // dummy route for testing the login navigation etc
+        element: <Protected><h1>Home Page</h1></Protected>
     }
 ])
 

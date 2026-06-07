@@ -99,3 +99,13 @@ Navigation from one page to another is written in ui layer
 
 creating protected componenet to prevent user from accessing the features that needs login, if not login these pages/features cannot be accessed
 In auth context if(user) is yes then user is logged in else if it is null user is not logged in
+
+useNaviagte error ->
+if(!user){
+    navigate('/login') // ❌ Side effect during render!
+}
+Infinite Render Loops / React Errors: Calling Maps() modifies the history state of the router. Modifying state during a render triggers a re-render. React will catch this and throw an error (usually something like "Cannot update a component while rendering a different component").
+How useNavigate is meant to be used: The Maps function is an imperative hook. It is designed to be called inside event handlers (like a button click) or inside a useEffect hook, which runs after the render phase completes.
+If you really wanted to use useNavigate here, you would have to wrap it in a useEffect
+
+The <Navigate /> component is a declarative wrapper around useNavigate. Instead of telling React to change the page right now (imperative), you are telling React: "If there is no user, the UI for this component is a redirect" (declarative).
