@@ -95,3 +95,7 @@ CORS error --> backend normal communication error
 and we have to fix cors error in backend
 
 Navigation from one page to another is written in ui layer 
+
+
+creating protected componenet to prevent user from accessing the features that needs login, if not login these pages/features cannot be accessed
+In auth context if(user) is yes then user is logged in else if it is null user is not logged in
