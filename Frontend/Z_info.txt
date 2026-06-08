@@ -109,3 +109,5 @@ How useNavigate is meant to be used: The Maps function is an imperative hook. It
 If you really wanted to use useNavigate here, you would have to wrap it in a useEffect
 
 The <Navigate /> component is a declarative wrapper around useNavigate. Instead of telling React to change the page right now (imperative), you are telling React: "If there is no user, the UI for this component is a redirect" (declarative).
+
+NOW any page wrapped aroun PRotected route cannot be accessed by any ser before login

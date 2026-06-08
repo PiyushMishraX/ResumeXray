@@ -1,11 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { getMe } from "./services/auth.api";
 
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(null)
+    // const [loading, setLoading] = useState(false)
     const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+      
+        const getANdSetUser = async ()=> {
+            const data = await getMe()
+            setUser(data.user)
+            setLoading(false)
+        } 
+
+        getANdSetUser()
+    
+    }, [])
+    
 
     // we hydrate the user in the production , page relaod ke baad rehydrate karna hota hai use ko ( this is topic for future ) , so by default we setLoading to true
 
