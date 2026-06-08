@@ -7,7 +7,7 @@ async function authUser(req, res, next) {
     // console.log(1)// fpr testing
     
     if(!token) {
-        return res.status.json({
+        return res.status(401).json({
             message: "Token not provided.",
         })
         // console.log(2.1)

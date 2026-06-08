@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../auth.context"; // im[port state layer partscv]
 import { login, register, logout, getMe} from "../services/auth.api" // import api layer parts
 
@@ -51,6 +51,24 @@ export const useAuth = ()=>{
             setLoading(false)
         }
     }
+
+     useEffect(() => {
+      
+        const getANdSetUser = async ()=> {
+            try {
+                const data = await getMe()
+                setUser(data.user)
+                
+            } catch (err) {
+                
+            } finally {
+                setLoading(false)
+            }
+        } 
+
+        getANdSetUser()
+    
+    }, [])
 
     return { user, loading ,handleRegister, handleLogin, handleLogout  }
 

@@ -98,7 +98,7 @@ export async function getMe(){
   // }
 
   try {
-    const response = await api.get("/api/auth/getme")
+    const response = await api.get("/api/auth/get-me")
     return response.data
     
   } catch (err) {
