@@ -37,3 +37,16 @@ jwt_token can only be opened by server ( only server know whats in it)
 and bcrypt password can only be opened by user ( only user knows whats in it)
 
 to fix cors error we run npm i cors and use cors middleware
+
+
+AI-features
+User - Self descritption , resume( pdf), job descritption
+pdf to text conversion
+then give all info to ai
+report from structure json output
+technicalQuestions , behaviouralQuestions , skillGasp , prepPlan
+then give this structure to User
+( AI -> Gemini Model , pdf reader library)
+Save this report for user ( in  database )
+
+Schema -> AI features -> endPoint
