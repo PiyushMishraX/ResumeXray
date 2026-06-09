@@ -3,6 +3,7 @@ ran --> npm init -y ( intiate node js application )
 1. npm i express mongoose dotenv
 2. npm i bcryptjs jsonwebtoken cookie-parser
 3. npm i cors
+4. npm install @google/genai
  
 
 nect the user register ( storing the user in db format ) and authentication , login api's
@@ -50,3 +51,13 @@ then give this structure to User
 Save this report for user ( in  database )
 
 Schema -> AI features -> endPoint
+
+Schema done 
+Now AI features/ service setup ( endPoint creation to generate report with the help of ai )
+
+how install / add gemini in backend
+get api key from google ai studio
+
+selecting a model from gemini / ( not much priced ( for now ) and have needed usecases ) , 
+For interview ai -> model must support structured output 
+( for now choosing gemini Flash 2.5) 

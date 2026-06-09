@@ -125,3 +125,7 @@ const interviewReportSchema = new mongoose.Schema({
     preparationPlan: [ preparationPlanSchema ]
 
 })
+
+const interviewReportModel = mongoose.model( "InterviewReport", interviewReportSchema );
+
+module.exports = interviewReportModel;
