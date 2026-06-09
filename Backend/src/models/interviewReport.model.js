@@ -35,3 +35,29 @@ const mongoose = require('mongoose');
  * }]
  * 
  */
+
+
+const interviewReportSchema = new mongoose.Schema({
+    jobDescritption: {
+        type: String,
+        require: [ true, "Job description is required" ]
+    },
+    // any one of the resume or self description is necessary
+    resume: {
+        type: String,
+    },
+    selfDescription: {
+        type: String,
+    },
+    matchScore: {
+        type: Number,
+        min: 0,
+        max: 100,
+    },
+    // technicalQuestions: // using subSchema // in array format because this fields can have multiple values of subSchemas
+    technicalQuestions: [  ],
+    behavioralQuestions : [  ],
+    skillGaps: [  ],
+    preparationPlan: [  ]
+
+})
