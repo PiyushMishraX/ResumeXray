@@ -36,6 +36,70 @@ const mongoose = require('mongoose');
  * 
  */
 
+const TechincalQuestionSchema = new mongoose.Schema({
+    question: {
+        type: String,
+        required: [ true, "Technical question is required"]
+    },
+    intention: {
+        type: String,
+        required: [ true, "Intention is required"]
+    },
+    answer: {
+        type: String,
+        required: [ true, "Answer is required"]
+    },
+}, {
+    _id: false, // we do not need id because we aren't storing this schema seperately but in interviewReport Schema as subSchema
+})
+
+const behavioralQuestionSchema = new mongoose.Schema({
+    question: {
+        type: String,
+        required: [ true, "Behviroal question is required"]
+    },
+    intention: {
+        type: String,
+        required: [ true, "Intention is required"]
+    },
+    answer: {
+        type: String,
+        required: [ true, "Answer is required"]
+    },
+}, {
+    _id: false, 
+})
+
+const skillGapsSchema = new mongoose.Schema({
+    skill: {
+        type: String,
+        required: [ true, "Skill is required"]
+    },
+    severity: {
+        type: String,
+        enum: [ "low", "medium", "high"],
+        required: [ true, "Severity is required"]
+    }
+}, {
+    _id: false
+})
+
+const preparationPlanSchema = new mongoose.Schema({
+    day: {
+        type: Number,
+        required: [ true, "Day is required" ]
+    },
+    focus: {
+        type: String,
+        reuqired: [ true, "Focus is required" ]
+    },
+    tasks: [ {
+        type: String,
+        required: [ true, "Task is required"]
+    } ]
+}, {
+    _id: false
+})
 
 const interviewReportSchema = new mongoose.Schema({
     jobDescritption: {
@@ -55,9 +119,9 @@ const interviewReportSchema = new mongoose.Schema({
         max: 100,
     },
     // technicalQuestions: // using subSchema // in array format because this fields can have multiple values of subSchemas
-    technicalQuestions: [  ],
-    behavioralQuestions : [  ],
-    skillGaps: [  ],
-    preparationPlan: [  ]
+    technicalQuestions: [ TechincalQuestionSchema ],
+    behavioralQuestions : [ behavioralQuestionSchema ],
+    skillGaps: [ skillGapsSchema ],
+    preparationPlan: [ preparationPlanSchema ]
 
 })
