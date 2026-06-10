@@ -61,3 +61,9 @@ get api key from google ai studio
 selecting a model from gemini / ( not much priced ( for now ) and have needed usecases ) , 
 For interview ai -> model must support structured output 
 ( for now choosing gemini Flash 2.5) 
+
+
+Have to create function which takes data and gives structured output
+Gemini docs -> structured o/p ( follows the JSON Schema provided for structure ) -> to store in db easily
+
+needs zod package
