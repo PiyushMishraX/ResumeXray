@@ -4,6 +4,8 @@ ran --> npm init -y ( intiate node js application )
 2. npm i bcryptjs jsonwebtoken cookie-parser
 3. npm i cors
 4. npm install @google/genai
+5. npm i zod
+6. npm i zod-to-json-schema
  
 
 nect the user register ( storing the user in db format ) and authentication , login api's
@@ -67,3 +69,4 @@ Have to create function which takes data and gives structured output
 Gemini docs -> structured o/p ( follows the JSON Schema provided for structure ) -> to store in db easily
 
 needs zod package
+( follow documentation steps for structured output)
