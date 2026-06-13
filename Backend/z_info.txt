@@ -70,3 +70,5 @@ Gemini docs -> structured o/p ( follows the JSON Schema provided for structure )
 
 needs zod package
 ( follow documentation steps for structured output)
+
+creating api which needs resume in pdf format , job description and  selfDescription in text format

@@ -1,7 +1,7 @@
 const { GoogleGenAI } = require("@google/genai")
 const { z } = require("zod")
 // const { zodToJsonSchema} = require("zod-to-json-schema")
-const { resume, selfDescription, jobDescription } = require('./temp_sample')
+// //const { resume, selfDescription, jobDescription } = require('./temp_sample') // already imported it for passing in server.js 
 
 
 const ai = new GoogleGenAI({
@@ -90,7 +90,7 @@ async function generateInterviewReport( resume, selfDescription, jobDescription)
         model: "gemini-3.1-flash-lite",
         // contents: "",
         contents: prompt,
-        
+
         // config: { // changed 
         //     responseMimeType: "application/json", // format details // json format
         //     // responseJsonSchema: zodToJsonSchema(interviewReportSchema) 
@@ -119,12 +119,16 @@ async function generateInterviewReport( resume, selfDescription, jobDescription)
         config: { // changed 
             responseMimeType: "application/json", // format details // json format
             responseJsonSchema: z.toJSONSchema(interviewReportSchema) 
+            
         }
 
     })
-
-    console.log(JSON.parse(response.text)) 
+    
     // console.log(response.text)
+    // console.log(JSON.parse(response.text)) 
+    // console.log(JSON.stringify(JSON.parse(response.text)))  // now it shows what is in tasks array to 
+    // console.dir(JSON.parse(response.text)) // can use dir too
+    console.log(JSON.stringify(JSON.parse(response.text), null, 2)); // Converts that JavaScript object back into a string, but forces Node.js to unpack every single nested layer and format it with a 2-space indentation, bypassing the console's default depth limits.
 
     
 }
