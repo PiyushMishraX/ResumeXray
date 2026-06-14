@@ -122,7 +122,11 @@ const interviewReportSchema = new mongoose.Schema({
     technicalQuestions: [ TechincalQuestionSchema ],
     behavioralQuestions : [ behavioralQuestionSchema ],
     skillGaps: [ skillGapsSchema ],
-    preparationPlan: [ preparationPlanSchema ]
+    preparationPlan: [ preparationPlanSchema ],
+    user: { // to tell data saved is of which user
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users"
+    },
 
 })
 
