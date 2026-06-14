@@ -77,3 +77,11 @@ creating api which needs resume in pdf format , job description and  selfDescrip
 
 multer for manage/reading files of different formats ( pdf images etc )
 pdf-parse to read/ text data inside a pdf
+
+
+
+pdfParse is not a function
+it is an istance 
+pdfParse(req.file.buffer)
+fix -->
+ (new pdfParse.PDFParse(req.file.buffer)).getText()

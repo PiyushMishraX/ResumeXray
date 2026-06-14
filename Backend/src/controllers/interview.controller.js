@@ -6,22 +6,29 @@ async function generateInterviewReportController(req, res) {
     const resumeFile = req.file
     // req.file is the uploaded file for .single and array in req.files for .array
   // req.body contains text fields
+  // data is send in form data format
 
-  const resumeContent = pdfParse(req.file.buffer)
+//   const resumeContent = pdfParse(req.file.buffer) // error
+  // const resumeContent = await (new pdfParse.PDFParse(req.file.buffer)).getText() // we need to send the file in Unit8Array format instead of binary
+  const resumeContent = await (new pdfParse.PDFParse(Uint8Array.from(req.file.buffer))).getText()
+
   const { selfDescription , jobDescription } = req.body
 
   const interviewReportByAi = await generateInterviewReport({
-    resume: resumeContent,
-    selfDescription
+    resume: resumeContent.text,
+    selfDescription,
+    jobDescription
   })
 
   const interviewReport = await interviewReportModel.create({
     user: req.user.id, // so that is why we pass id in the response in the auth controllers to create connections between in schemas // the id of logged in user
-    resume: resumeContent,
+    // resume: resumeContent, // tthis might just have multiple pages but we want whole text content so using .text 
+    resume: resumeContent.text,
     selfDescription,
-    jobDescritption,
+    jobDescription,
     ...interviewReportByAi // all the data/answer provided by ai/destructured
   })
+
 
   res.status(201).json({
     message: "Interview report generated successfully.",
