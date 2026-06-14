@@ -6,6 +6,8 @@ ran --> npm init -y ( intiate node js application )
 4. npm install @google/genai
 5. npm i zod
 6. npm i zod-to-json-schema
+7.  npm i multer
+8. npm i pdf-parse
  
 
 nect the user register ( storing the user in db format ) and authentication , login api's
@@ -72,3 +74,6 @@ needs zod package
 ( follow documentation steps for structured output)
 
 creating api which needs resume in pdf format , job description and  selfDescription in text format
+
+multer for manage/reading files of different formats ( pdf images etc )
+pdf-parse to read/ text data inside a pdf
