@@ -130,6 +130,9 @@ async function generateInterviewReport( resume, selfDescription, jobDescription)
     // console.dir(JSON.parse(response.text)) // can use dir too
     console.log(JSON.stringify(JSON.parse(response.text), null, 2)); // Converts that JavaScript object back into a string, but forces Node.js to unpack every single nested layer and format it with a 2-space indentation, bypassing the console's default depth limits.
 
+
+    return JSON.parse(response.text)
+
     
 }
 

@@ -20,6 +20,8 @@ async function generateInterviewReportController(req, res) {
     jobDescription
   })
 
+  // console.log(interviewReportByAi) // the original ai services generateInterviewReport function do not have returned the report so the interviewReportByAi is undifined , returning the report solvest the problem
+
   const interviewReport = await interviewReportModel.create({
     user: req.user.id, // so that is why we pass id in the response in the auth controllers to create connections between in schemas // the id of logged in user
     // resume: resumeContent, // tthis might just have multiple pages but we want whole text content so using .text 
@@ -29,6 +31,7 @@ async function generateInterviewReportController(req, res) {
     ...interviewReportByAi // all the data/answer provided by ai/destructured
   })
 
+  // console.log(interviewReport)
 
   res.status(201).json({
     message: "Interview report generated successfully.",
