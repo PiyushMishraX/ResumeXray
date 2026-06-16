@@ -20,7 +20,7 @@ async function generateInterviewReportController(req, res) {
     jobDescription
   })
 
-  // console.log(interviewReportByAi) // the original ai services generateInterviewReport function do not have returned the report so the interviewReportByAi is undifined , returning the report solvest the problem
+  // console.log(interviewReportByAi) // the original ai services generateInterviewReport function do not have returned the report so the interviewReportByAi is undifined , returning the report solves the problem
 
   const interviewReport = await interviewReportModel.create({
     user: req.user.id, // so that is why we pass id in the response in the auth controllers to create connections between in schemas // the id of logged in user
