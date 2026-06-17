@@ -15,9 +15,10 @@ const Home = () => {
                     <input type="file" name='resume' id='resume' accept='.pdf' />
                 </div>
                 <div className="input-group">
-                    <label htmlFor='selfDescription' >Upload resume</label>
-                    <input type="file" name='selfDescription' id='selfDescription' accept='.pdf' />
+                    <label htmlFor='selfDescription' >Self Description</label>
+                    <textarea name="selfDescription" id="selfDescription" placeholder='Describe yourself in a few sentences...'></textarea>
                 </div>
+                <button className='generate-btn'>Generate Interview Report</button>
             </div>
         </div>
     </main>
