@@ -58,6 +58,7 @@ export const useAuth = ()=>{
             try {
                 const data = await getMe()
                 setUser(data.user)
+                // try catch for when te token gets required and the website shows error on loading
                 
             } catch (err) {
                 
