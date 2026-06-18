@@ -11,8 +11,8 @@ const Home = () => {
             </div>
             <div className="right">
                 <div className="input-group">
-                    <label htmlFor='resume' >Upload resume</label>
-                    <input type="file" name='resume' id='resume' accept='.pdf' />
+                    <label className='file-label' htmlFor='resume' >Upload resume</label>
+                    <input hidden type="file" name='resume' id='resume' accept='.pdf' />
                 </div>
                 <div className="input-group">
                     <label htmlFor='selfDescription' >Self Description</label>

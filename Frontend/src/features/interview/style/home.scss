@@ -27,11 +27,24 @@
     }
 
     .left {
-        background-color: red;
+        // background-color: red;
         align-self: stretch;
     }
-    .right {
-        background-color: green;
+    // .right {
+    //     background-color: green;
+    // }
+
+    .file-label {
+        display: inline-block;
+        padding: 0.75rem 1rem;
+        background-color: #ebedf0;
+        color: rgb(30, 30, 30);
+        border-radius: 0.5rem;
+        cursor: pointer;
+        // margin-left: 1rem;
+        // margin-left: 16px; // 1 rem 16px for if roots font size not changed
     }
+
+    
 }
 
