@@ -7,10 +7,12 @@ const Home = () => {
         <div className="interview-input-group">
 
             <div className="left">
+                <label htmlFor='jobDescription'>Job Description</label>
                 <textarea name='jonDescription' id='jobDescription' placeholder='Enter job description here...' ></textarea>
             </div>
             <div className="right">
                 <div className="input-group">
+                    <p>Resume <small className='highlight'>(Use Resume and self description together for best Results.)</small></p>
                     <label className='file-label' htmlFor='resume' >Upload resume</label>
                     <input hidden type="file" name='resume' id='resume' accept='.pdf' />
                 </div>
@@ -18,7 +20,8 @@ const Home = () => {
                     <label htmlFor='selfDescription' >Self Description</label>
                     <textarea name="selfDescription" id="selfDescription" placeholder='Describe yourself in a few sentences...'></textarea>
                 </div>
-                <button className='generate-btn'>Generate Interview Report</button>
+                {/* <button className='generate-btn'>Generate Interview Report</button> */}
+                <button className='button primary-button'>Generate Interview Report</button>
             </div>
         </div>
     </main>
