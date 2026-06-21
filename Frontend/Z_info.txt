@@ -111,3 +111,20 @@ If you really wanted to use useNavigate here, you would have to wrap it in a use
 The <Navigate /> component is a declarative wrapper around useNavigate. Instead of telling React to change the page right now (imperative), you are telling React: "If there is no user, the UI for this component is a redirect" (declarative).
 
 NOW any page wrapped aroun PRotected route cannot be accessed by any ser before login
+
+
+
+( Putting the desgin in ai )
+the report frontend structure
+three section
+First section navbar -
+Technical questions
+Behavioral questions
+Roadmap
+
+second section -
+It have the navigated data from the navbar
+( here will be main content )
+
+third section -
+skill gaps ( in icons )

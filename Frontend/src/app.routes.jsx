@@ -6,6 +6,7 @@ import App from "./App"
 import {Navigate } from "react-router"
 import Protected from "./features/auth/components/Protected"
 import Home from "./features/interview/pages/Home"
+import Interview from "./features/interview/pages/Interview"
 
 //  creating dommy pages not exact ui
 //  router creater with two routes
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
         path: "/",
         // element: <Protected><h1>Home Page</h1></Protected> // using our real Home page instead of dummy
         element: <Protected><Home/></Protected>
+    },
+    {
+        path:"/interview/:interviewId",
+        element: <Protected><Interview/></Protected>
     }
 ])
 
