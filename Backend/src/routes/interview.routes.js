@@ -15,10 +15,6 @@ interviewRouter.post("/", authMiddleware.authUser, upload.single("resume") , int
 // auth user passes to the controller only when a logged in user is trying to do the operations
 // multer middleware after the auth , the files comes under name resume in the req 
 
-
-// api to fetch all the reports created till now for use
-/** */
-
 // specific report generator 
 /** 
  * @rotue GET /api/interview/report/:interviewId
@@ -26,6 +22,14 @@ interviewRouter.post("/", authMiddleware.authUser, upload.single("resume") , int
  * @access private
 */
 interviewRouter.get("/report/:interviewId", authMiddleware.authUser, interviewController.getInterviewReportByIdController)
+
+// api to fetch all the reports created till now for use
+/**
+ * @route GET /api/interview/
+ * @description get all interview reports of logged in user.
+ * @access private
+ */
+interviewRouter.get("/", authMidddleware.authUser, interviewController.getAllInterview )
 
 
 module.exports = interviewRouter

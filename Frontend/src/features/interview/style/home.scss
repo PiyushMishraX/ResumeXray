@@ -104,6 +104,7 @@ body {
       .highlight-gradient {
         background: linear-gradient(90deg, #ff2a85, #8a2be2);
         -webkit-background-clip: text;
+        background-clip: text; // defining standard property for compatibility
         -webkit-text-fill-color: transparent;
       }
     }
