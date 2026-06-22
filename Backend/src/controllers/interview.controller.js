@@ -2,6 +2,9 @@ const pdfParse = require("pdf-parse") // to get content which is under the file
 const generateInterviewReport = require("../services/ai.service")
 const interviewReportModel = require("../models/interviewReport.model")
 
+/**
+ * @description Controller to generate interview report based on use self description, resume and job description
+ */
 async function generateInterviewReportController(req, res) {
     const resumeFile = req.file
     // req.file is the uploaded file for .single and array in req.files for .array
@@ -40,7 +43,27 @@ async function generateInterviewReportController(req, res) {
     
 }
 
+async function getInterviewReportByIdController(req, res) {
+
+  const { interviewId } = req.params
+
+  const interviewReport = await interviewReportModel.findOne({ _id: interviewId, user: req.user.id })
+
+  if(!interviewReport) {
+   return res.status(404).json({
+    message: "Interview report not found"
+   })
+  }
+
+  res.status(200).json({
+    message: "Interview report fetched successfully",
+    interviewReport
+  })
+
+}
+
 
 module.exports = {
-    generateInterviewReportController
+    generateInterviewReportController,
+    getInterviewReportByIdController
 }
