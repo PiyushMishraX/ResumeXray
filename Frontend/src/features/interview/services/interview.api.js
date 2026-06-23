@@ -6,7 +6,9 @@ const api = axios.create({
 })
 
 
-
+/**
+ * @description Service to generate interview report based on user self description , resume and job description
+ */
 export const generateInterviewReport = ({ jobDescription, selfDescription }) => {
 
      const formData = new FormData() // formData format becuase file can be send to server in backend through form data format from frontend
@@ -23,3 +25,20 @@ export const generateInterviewReport = ({ jobDescription, selfDescription }) => 
      return response.data
 }
 
+/**
+ * @description Service to get interview report by interviewId.
+ */
+export const getInterviewReportById = (interviewId) => {
+    const response = await api.get(`/api/interview/report/${interviewId}`)
+
+    return response.data
+}
+
+/**
+ * @description Service to get all interview reports of logged in user.
+ */
+export const getAllInterviewReports = (interviewId) => {
+    const response = await api.get(`/api/interview/`)
+
+    return response.data
+}
