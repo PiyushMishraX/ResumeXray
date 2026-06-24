@@ -24,5 +24,32 @@ export const useInterview = () => {
         }
     } 
 
+    // to fetch info of report by Id
+    const getReportById = async (interviewId) => {
+        setLoading(true)
+        try {
+            const reponse = await getInterviewReportById(interviewId)
+        } catch (error) {
+            console.log(erro)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    // to get all interview reports
+    const getReports = async () => {
+        setLoading(true)
+        try {
+            const reponse = await getAllInterviewReports(interviewId)
+        } catch (error) {
+            console.log(erro)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+
+    return { loding, setLoading, reports, generateReport, getReports, getReportById}
+
 
 }
