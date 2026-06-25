@@ -35,8 +35,11 @@
 
 import React from 'react';
 import '../style/home.scss';
+import { useInterview } from '../hooks/useInterview'; // returns or givess as things
 
 const Home = () => {
+
+  const {setLoading, generateReport} = useInterview()
   return (
     <main className="home">
       <header className="page-header">
