@@ -33,13 +33,24 @@
 
 
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import '../style/home.scss';
 import { useInterview } from '../hooks/useInterview'; // returns or givess as things
+import { useNavigate } from "react-router";
 
 const Home = () => {
 
-  const {setLoading, generateReport} = useInterview()
+  const { laoding, generateReport } = useInterview()
+
+  // state variables for two way binding of text areas
+  const [jobDescription, setJobDescription] = useState("")
+  const [selfDescription, setSelfDescription] = useState("")
+  const resumeInputRef =  useRef()
+
+  const navigate = useNavigate()
+
+
+
   return (
     <main className="home">
       <header className="page-header">
@@ -61,6 +72,7 @@ const Home = () => {
             </div>
             <div className="textarea-wrapper">
               <textarea
+                onChange={(e)=>{setJobDescription(e.target.value)}}
                 name="jobDescription"
                 id="jobDescription"
                 placeholder="Paste the full job description here...&#10;e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScript, and large-scale system design...'"
@@ -85,7 +97,7 @@ const Home = () => {
                 <div className="upload-icon">☁️</div>
                 <p className="upload-title">Click to upload or drag & drop</p>
                 <p className="upload-subtitle">PDF or DOCX (Max 5MB)</p>
-                <input hidden type="file" name="resume" id="resume" accept=".pdf,.docx" />
+                <input ref={resumeInputRef} hidden type="file" name="resume" id="resume" accept=".pdf,.docx" />
               </label>
             </div>
 
@@ -98,6 +110,7 @@ const Home = () => {
                 Quick Self-Description
               </label>
               <textarea
+                onChange={(e)=>{setSelfDescription(e.target.value)}}
                 name="selfDescription"
                 id="selfDescription"
                 className="small-textarea"
@@ -116,7 +129,9 @@ const Home = () => {
 
         <div className="card-footer">
           <p className="footer-status">AI-Powered Strategy Generation • Approx 30s</p>
-          <button className="generate-btn">
+          <button 
+            onClick={}
+            className="generate-btn">
             <span className="btn-icon">✨</span> Generate My Interview Strategy
           </button>
         </div>
