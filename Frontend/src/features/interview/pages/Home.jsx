@@ -49,7 +49,11 @@ const Home = () => {
 
   const navigate = useNavigate()
 
-
+  const handleGeneratorReport = async () =>{
+    const resumeFile = resumeInputRef.current.files[0]
+    await generateReport({ jobDescription, selfDescription, resumeFile })
+    navigate(`/interview/${data._id}`)
+  }
 
   return (
     <main className="home">
@@ -130,7 +134,7 @@ const Home = () => {
         <div className="card-footer">
           <p className="footer-status">AI-Powered Strategy Generation • Approx 30s</p>
           <button 
-            onClick={}
+            onClick={handleGeneratorReport}
             className="generate-btn">
             <span className="btn-icon">✨</span> Generate My Interview Strategy
           </button>
