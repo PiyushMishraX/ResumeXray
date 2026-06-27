@@ -1,51 +1,9 @@
 import React, { useState } from 'react';
 import '../style/interview.scss';
+import { useInterview } from '../hooks/useInterview';
 
 // Using your provided JSON structure
-const mockData = {
-  "_id": { "$oid": "6a2e8ed53eca2c537455abbf" },
-  "matchScore": 0,
-  "technicalQuestions": [
-    {
-      "question": "Can you walk me through your technical background and key projects?",
-      "intention": "To assess the candidate's core competencies and technical depth in the absence of specific job details.",
-      "answer": "Structure your answer using the STAR method (Situation, Task, Action, Result), focusing on projects that highlight problem-solving skills and technical proficiency."
-    }
-  ],
-  "behavioralQuestions": [
-    {
-      "question": "Tell me about a time you faced a significant challenge in a team environment. How did you resolve it?",
-      "intention": "To evaluate interpersonal skills, teamwork, and conflict resolution abilities.",
-      "answer": "Focus on a specific conflict, the steps taken to communicate effectively, and the positive outcome achieved."
-    }
-  ],
-  "skillGaps": [
-    {
-      "skill": "Role-specific technical skills",
-      "severity": "high"
-    },
-    {
-      "skill": "Redis",
-      "severity": "medium"
-    },
-    {
-      "skill": "Event loop",
-      "severity": "low"
-    }
-  ],
-  "preparationPlan": [
-    {
-      "day": 1,
-      "focus": "Research and Analysis",
-      "tasks": [
-        "Reach out to the recruiter for a detailed job description",
-        "Research the company's tech stack and current projects"
-      ]
-    }
-  ],
-  "user": { "$oid": "6a19b794629f0a97a7596145" },
-  "__v": 0
-};
+
 
 // Inline SVG Icons
 const Icons = {
@@ -81,13 +39,15 @@ const Interview = () => {
   const [activeTab, setActiveTab] = useState('technical');
   const [openQId, setOpenQId] = useState(0);
 
+  const { report } = useInterview()
+
   const toggleQuestion = (index) => {
     setOpenQId(openQId === index ? null : index);
   };
 
   const renderContent = () => {
     if (activeTab === 'technical' || activeTab === 'behavioral') {
-      const questions = activeTab === 'technical' ? mockData.technicalQuestions : mockData.behavioralQuestions;
+      const questions = activeTab === 'technical' ? report.technicalQuestions : report.behavioralQuestions;
       const title = activeTab === 'technical' ? 'Technical Questions' : 'Behavioral Questions';
 
       return (
@@ -130,10 +90,10 @@ const Interview = () => {
         <section>
           <div className="content-header">
             <h2>Preparation Road Map</h2>
-            <span className="content-header__count">{mockData.preparationPlan.length} Days</span>
+            <span className="content-header__count">{report.preparationPlan.length} Days</span>
           </div>
           <div className="roadmap-list">
-            {mockData.preparationPlan.map((plan, idx) => (
+            {report.preparationPlan.map((plan, idx) => (
               <div key={idx} className="roadmap-day">
                 <div className="roadmap-day__header">
                   <span className="roadmap-day__badge">Day {plan.day}</span>
@@ -202,10 +162,10 @@ const Interview = () => {
           <div className="match-score">
             <h3 className="match-score__label">Role Match</h3>
             <div className={`match-score__ring ${
-              mockData.matchScore > 75 ? 'score--high' : 
-              mockData.matchScore > 40 ? 'score--mid' : 'score--low'
+              report.matchScore > 75 ? 'score--high' : 
+              report.matchScore > 40 ? 'score--mid' : 'score--low'
             }`}>
-              <span className="match-score__value">{mockData.matchScore}</span>
+              <span className="match-score__value">{report.matchScore}</span>
               <span className="match-score__pct">%</span>
             </div>
             <p className="match-score__sub">Based on resume</p>
@@ -216,7 +176,7 @@ const Interview = () => {
           <div className="skill-gaps">
             <h3 className="skill-gaps__label">Skill Gaps</h3>
             <div className="skill-gaps__list">
-              {mockData.skillGaps.map((gap, idx) => (
+              {report.skillGaps.map((gap, idx) => (
                 <span 
                   key={idx} 
                   className={`skill-tag skill-tag--${gap.severity}`}

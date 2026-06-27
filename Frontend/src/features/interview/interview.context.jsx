@@ -8,8 +8,8 @@ export const InterviewProvider = ({ children }) => {
     const [reports, setReports] = useState([])
 
     return (
-        <InterviewContext.Provider value= {{ laoding, setLoading, report, setReport, reports, setReports }} >
-            {childern}
+        <InterviewContext.Provider value= {{ loading, setLoading, report, setReport, reports, setReports }} >
+            {children}
         </InterviewContext.Provider>
     )
 

@@ -40,7 +40,7 @@ import { useNavigate } from "react-router";
 
 const Home = () => {
 
-  const { laoding, generateReport } = useInterview()
+  const { loading, generateReport } = useInterview()
 
   // state variables for two way binding of text areas
   const [jobDescription, setJobDescription] = useState("")
@@ -53,6 +53,14 @@ const Home = () => {
     const resumeFile = resumeInputRef.current.files[0]
     await generateReport({ jobDescription, selfDescription, resumeFile })
     navigate(`/interview/${data._id}`)
+  }
+
+  if(loading) {
+    return (
+      <main className='loading-screen'>
+        <h1>Loading your interview plan...</h1>
+      </main>
+    )
   }
 
   return (
