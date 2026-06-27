@@ -7,7 +7,7 @@ export const useInterview = () => {
     const context = useContext(InterviewContext)
 
     if(!context ) {
-        throw new Error("useInterview mus tbe within an InterviewProvider")
+        throw new Error("useInterview must be within an InterviewProvider")
     } // this occurs when we try to access our context outside our Provider
 
     const { loading , setLoading, report, setReport, reports, setReports } = context
@@ -15,7 +15,7 @@ export const useInterview = () => {
     const generateReport = async ({ jobDescription, selfDescription, resumeFile }) => {
         setLoading(true)
         try{
-            const response = await generateInterviewReport({ jonDescriptiom, selfDescription, resumeFile})
+            const response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile})
             setReport(response.interviewReport)
         } catch (error){
             console.log(error)
