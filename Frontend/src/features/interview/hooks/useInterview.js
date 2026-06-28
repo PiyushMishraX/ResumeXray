@@ -18,7 +18,9 @@ export const useInterview = () => {
         try{
             // const response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile}) // have to return response
             response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile})
+            // console.log(response) // for debuga
             setReport(response.interviewReport) 
+            // console.log(report)
         } catch (error){
             console.log(error)
         } finally {
@@ -60,7 +62,7 @@ export const useInterview = () => {
     }
 
 
-    return { loading, setLoading, reports, generateReport, getReports, getReportById}
+    return { loading, report, setLoading, reports, generateReport, getReports, getReportById}
 
 
 }

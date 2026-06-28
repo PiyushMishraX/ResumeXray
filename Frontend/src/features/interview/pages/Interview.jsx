@@ -44,6 +44,7 @@ const Interview = () => {
   const toggleQuestion = (index) => {
     setOpenQId(openQId === index ? null : index);
   };
+  // console.log(report)
 
   const renderContent = () => {
     if (activeTab === 'technical' || activeTab === 'behavioral') {
