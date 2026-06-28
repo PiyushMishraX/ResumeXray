@@ -14,6 +14,11 @@ $severity-high: #ef4444;
 $severity-medium: #f59e0b;
 $severity-low: #10b981;
 
+// Responsive Breakpoints
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 1024px;
+$breakpoint-md: 768px;
+
 *::-webkit-scrollbar {
     display: none;
 }
@@ -26,39 +31,103 @@ $severity-low: #10b981;
     color: $text-primary;
     font-family: $font-stack;
     display: flex;
+    flex-direction: column; // Defaults to vertical layout for mobile, overrides to stretch on desktop
     align-items: stretch;
-    padding: 2rem;
+    padding: 1rem; // Scaled down padding for smaller devices
     box-sizing: border-box;
+
+    @media (min-width: $breakpoint-md) {
+        padding: 2rem;
+    }
 }
 
-// ── 3-Column Layout ───────────────────────────────────────────────────────────
+// ── Mobile Utility Header (Visible only on smaller viewports) ─────────────────
+.mobile-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: $breakpoint-lg) {
+        display: none; // Hidden on desktop layouts
+    }
+
+    &__toggle {
+        background: none;
+        border: 1px solid $border-color;
+        color: $text-primary;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: $bg-panel;
+        }
+    }
+}
+
+// ── Responsive Layout Container ───────────────────────────────────────────────
 .interview-layout {
     display: flex;
+    flex-direction: column; // Vertical stack for mobile
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
     background-color: $bg-card;
     border: 1px solid $border-color;
     border-radius: 1rem;
-    justify-content: space-between;
     overflow: hidden;
+
+    @media (min-width: $breakpoint-lg) {
+        flex-direction: row; // 3-Column horizontal alignment for desktop
+        justify-content: space-between;
+    }
 }
 
 .interview-divider {
-    width: 1px;
-    background-color: $border-color;
-    flex-shrink: 0;
+    display: none; // Hidden when columns are stacked vertically
+
+    @media (min-width: $breakpoint-lg) {
+        display: block;
+        width: 1px;
+        background-color: $border-color;
+        flex-shrink: 0;
+    }
 }
 
 // ── Left Nav ─────────────────────────────────────────────────────────────────
 .interview-nav {
-    width: 250px;
-    flex-shrink: 0;
-    padding: 2rem 1.25rem;
+    width: 100%; // Spans full width on mobile
+    padding: 1.5rem 1.25rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 0.5rem;
+    border-bottom: 1px solid $border-color;
+
+    // Optional Class: Toggle this via JS on mobile to show/hide the menu
+    &--collapsed {
+        @media (max-width: $breakpoint-lg) {
+            display: none;
+        }
+    }
+
+    @media (min-width: $breakpoint-lg) {
+        width: 240px;
+        flex-shrink: 0;
+        padding: 2rem 1.25rem;
+        justify-content: space-between;
+        border-bottom: none;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+        width: 250px;
+    }
 
     &__label {
         font-size: 0.75rem;
@@ -113,10 +182,16 @@ $severity-low: #10b981;
 // ── Center Content ────────────────────────────────────────────────────────────
 .interview-content {
     flex: 1;
-    padding: 2rem 3rem;
+    padding: 1.5rem; // Snug padding for tiny screens
     overflow-y: auto;
-    max-height: calc(100vh - 4rem);
-    align-items: flex-start;
+
+    @media (min-width: $breakpoint-md) {
+        padding: 2rem 3rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+        max-height: calc(100vh - 4rem);
+    }
 
     section {
         min-height: 100%;
@@ -126,16 +201,21 @@ $severity-low: #10b981;
 .content-header {
     display: flex;
     align-items: center;
+    justify-content: space-between; // Maximizes UI width usage
     gap: 1rem;
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid $border-color;
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.25rem; // Slightly scaled down headline for mobile viewports
         font-weight: 700;
         color: $text-primary;
         margin: 0;
+
+        @media (min-width: $breakpoint-md) {
+            font-size: 1.5rem;
+        }
     }
 
     &__count {
@@ -169,10 +249,15 @@ $severity-low: #10b981;
     &__header {
         display: flex;
         align-items: flex-start;
-        gap: 1rem;
-        padding: 1.25rem;
+        gap: 0.75rem;
+        padding: 1rem;
         cursor: pointer;
         user-select: none;
+
+        @media (min-width: $breakpoint-md) {
+            gap: 1rem;
+            padding: 1.25rem;
+        }
     }
 
     &__index {
@@ -190,10 +275,14 @@ $severity-low: #10b981;
     &__question {
         flex: 1;
         margin: 0;
-        font-size: 1rem;
+        font-size: 0.95rem; // Scaled dynamic font sizing
         font-weight: 500;
         color: $text-primary;
         line-height: 1.5;
+
+        @media (min-width: $breakpoint-md) {
+            font-size: 1rem;
+        }
     }
 
     &__chevron {
@@ -209,12 +298,17 @@ $severity-low: #10b981;
     }
 
     &__body {
-        padding: 0 1.25rem 1.25rem;
+        padding: 0 1rem 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         border-top: 1px solid $border-color;
-        padding-top: 1.25rem;
+        padding-top: 1rem;
+
+        @media (min-width: $breakpoint-md) {
+            padding: 0 1.25rem 1.25rem;
+            padding-top: 1.25rem;
+        }
     }
 
     &__section {
@@ -263,12 +357,16 @@ $severity-low: #10b981;
     &::before {
         content: '';
         position: absolute;
-        left: 28px;
+        left: 20px; // Aligned for compact viewports
         top: 0;
         bottom: 0;
         width: 2px;
         background: linear-gradient(to bottom, $accent, rgba($accent, 0.1));
         border-radius: 1px;
+
+        @media (min-width: $breakpoint-md) {
+            left: 28px;
+        }
     }
 }
 
@@ -276,19 +374,27 @@ $severity-low: #10b981;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    padding: 1rem 0 1rem 4rem;
+    padding: 1rem 0 1rem 3rem; // Reduced left indention padding for mobile spacing
     position: relative;
+
+    @media (min-width: $breakpoint-md) {
+        padding: 1rem 0 1rem 4rem;
+    }
 
     &::before {
         content: '';
         position: absolute;
-        left: 21px;
+        left: 13px; // Re-centered indicator dot
         top: 1.35rem;
         width: 16px;
         height: 16px;
         border-radius: 50%;
         background-color: $bg-card;
         border: 2px solid $accent;
+
+        @media (min-width: $breakpoint-md) {
+            left: 21px;
+        }
     }
 
     &__header {
@@ -304,17 +410,19 @@ $severity-low: #10b981;
         background: linear-gradient(90deg, #ff2a85, #8a2be2);
         padding: 0.2rem 0.75rem;
         border-radius: 2rem;
-
-        // preventing the numbers from going to next line
         white-space: nowrap; 
         flex-shrink: 0;
     }
 
     &__focus {
         margin: 0;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 600;
         color: $text-primary;
+
+        @media (min-width: $breakpoint-md) {
+            font-size: 1.1rem;
+        }
     }
 
     &__tasks {
@@ -347,12 +455,23 @@ $severity-low: #10b981;
 
 // ── Right Sidebar ─────────────────────────────────────────────────────────────
 .interview-sidebar {
-    width: 280px;
-    flex-shrink: 0;
-    padding: 2rem;
+    width: 100%; // Component fills row spacing natively on mobile
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    border-top: 1px solid $border-color; // Separator for vertically stacked grid structures
+
+    @media (min-width: $breakpoint-lg) {
+        width: 260px;
+        flex-shrink: 0;
+        padding: 2rem;
+        border-top: none;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+        width: 280px;
+    }
 }
 
 .sidebar-divider {
