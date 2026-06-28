@@ -14,38 +14,49 @@ export const useInterview = () => {
 
     const generateReport = async ({ jobDescription, selfDescription, resumeFile }) => {
         setLoading(true)
+        let response = null
         try{
-            const response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile})
-            setReport(response.interviewReport)
+            // const response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile}) // have to return response
+            response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile})
+            setReport(response.interviewReport) 
         } catch (error){
             console.log(error)
         } finally {
             setLoading(false)
         }
+
+        return response.interviewReport // although we are setting the report but we need the return to pass the id etc to the calling part
     } 
 
     // to fetch info of report by Id
     const getReportById = async (interviewId) => {
         setLoading(true)
+        let response = null
         try {
-            const reponse = await getInterviewReportById(interviewId)
+            response = await getInterviewReportById(interviewId)
         } catch (error) {
-            console.log(erro)
+            console.log(error)
         } finally {
             setLoading(false)
         }
+        
+        return response.interviewReport
     }
 
     // to get all interview reports
     const getReports = async () => {
         setLoading(true)
+        let response = null
         try {
-            const reponse = await getAllInterviewReports(interviewId)
+            response = await getAllInterviewReports(interviewId)
         } catch (error) {
-            console.log(erro)
+            console.log(error)
         } finally {
             setLoading(false)
         }
+
+        return response.interviewReport
+
     }
 
 
