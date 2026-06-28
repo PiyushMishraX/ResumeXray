@@ -128,3 +128,17 @@ It have the navigated data from the navbar
 
 third section -
 skill gaps ( in icons )
+
+
+
+When we reload page at /interview/{interviewId}
+it resets the report, so we have rehydrate the report --
+in useInterview we use-->
+
+ useEffect(()=>{
+        if(interviewId){
+            getReportById(interviewId)
+        }
+    }, [ interviewId ])
+
+    which takes interviewId from params and for change in that the report reloads ( which happens only ones if url fdo not change )
