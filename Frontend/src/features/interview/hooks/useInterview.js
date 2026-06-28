@@ -40,6 +40,7 @@ export const useInterview = () => {
         try {
             response = await getInterviewReportById(interviewId)
             // console.log(response);
+            setReport(response.interviewReport) 
             
         } catch (error) {
             console.log(error)
@@ -58,6 +59,7 @@ export const useInterview = () => {
         let response = null
         try {
             response = await getAllInterviewReports(interviewId)
+            setReports(response.interviewReports)
         } catch (error) {
             console.log(error)
         } finally {
