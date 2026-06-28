@@ -56,7 +56,20 @@ async function registerUserController( req, res){
         { expiresIn: "1d"},
     ) // tokens are unique because they have issued at  timestamps which adds the unique time for the user , token generation 
 
-    res.cookie("token", token)
+    // res.cookie("token", token)
+
+    const oneDay = 24 * 60 * 60 * 1000; // a day in millisecons
+
+    res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: oneDay,
+
+        secure: false, // in https/ production use true
+        sameSite: 'lax' // for local host both local is considered sameSite in this  but in producution not sp we will use
+
+        // sameSite: 'none',
+        // secure: true // Requires HTTPS
+    })
 
     // 201--> new resource(user) create [in backend language the use is a resource too]
     res.status(201).json({
@@ -107,8 +120,17 @@ async function loginUserController( req, res){
         { expiresIn: "1d"},
     )
 
-    res.cookie("token", token)
+    // res.cookie("token", token)
     // res.cookie("testCookie", "hello") , testing cookieClear
+
+    const oneDay = 24 * 60 * 60 * 1000; 
+    res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: oneDay,
+
+        secure: false, 
+        sameSite: 'lax' 
+    })
 
     res.status(200).json({
         message: "User loggedIn successfully",
