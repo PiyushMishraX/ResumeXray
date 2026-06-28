@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../style/interview.scss';
 import { useInterview } from '../hooks/useInterview';
-import { useParams } from 'react-router';
 
 // Using your provided JSON structure
 
@@ -40,28 +39,7 @@ const Interview = () => {
   const [activeTab, setActiveTab] = useState('technical');
   const [openQId, setOpenQId] = useState(0);
 
-  const { report, getReportById, loading } = useInterview()
-  const { interviewId } = useParams()
-
-  // useEffect(()=>{
-  //   if(interviewId){
-  //     getReportById(interviewId)
-  //   }
-  // }, [ interviewId ]) // this runs for any change in interviewId provided in the params /interview/{interviewId}
-
-  // console.log(loading);
-  // console.log(report);
-  
-  
-  if( loading || !report ){
-    return (
-      <main className='laoding-screen' >
-        <h1>Loading your interview plan...</h1>
-      </main>
-    )
-  }
-
-  
+  const { report } = useInterview()
 
   const toggleQuestion = (index) => {
     setOpenQId(openQId === index ? null : index);

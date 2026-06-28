@@ -304,10 +304,6 @@ $severity-low: #10b981;
         background: linear-gradient(90deg, #ff2a85, #8a2be2);
         padding: 0.2rem 0.75rem;
         border-radius: 2rem;
-
-        // preventing the numbers from going to next line
-        white-space: nowrap; 
-        flex-shrink: 0;
     }
 
     &__focus {
