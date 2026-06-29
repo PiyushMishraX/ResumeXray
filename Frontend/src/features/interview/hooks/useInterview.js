@@ -73,6 +73,8 @@ export const useInterview = () => {
     useEffect(()=>{
         if(interviewId){
             getReportById(interviewId)
+        } else {
+            getReports() // it fetches atleast once when website starts
         }
     }, [ interviewId ])
 
