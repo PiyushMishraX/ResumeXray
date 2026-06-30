@@ -132,6 +132,8 @@ const interviewReportSchema = new mongoose.Schema({
         required: [ true, "Job title is required"]
     }
 
+}, {
+    timestamps: true // to record createAt time and change/modification time
 })
 
 const interviewReportModel = mongoose.model( "InterviewReport", interviewReportSchema );
