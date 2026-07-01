@@ -1,5 +1,8 @@
 const { GoogleGenAI } = require("@google/genai")
 const { z } = require("zod")
+// const { zodToJsonSchema } = require("zod-to-json-schema") //not needednow
+const puppeteer = require("puppeteer")
+
 const ai = new GoogleGenAI({
     apiKey: process.env.GOOGLE_GENAI_API_KEY
 })
@@ -117,4 +120,33 @@ async function generateInterviewReport( resume, selfDescription, jobDescription)
     
 }
 
+async function generateResumePdf({resume, selfDescription, jobDescription}) {
+    // we need to generate html through ai  and with the html and puppeteer we will generate pdf
+    
+    const resumePdfSchema = z.onject({
+        html: z.string().describe("The HTML content of th resume which can be converted to PDF using a library like puppeteer ")
+    })
+
+    const prompt = `Generate a resume for a candidate with the following details:
+                        Resume: ${resume}
+                        Self Description: ${selfDescription}
+                        Job Description: ${jobDescription}
+
+                    the response should be a JSON object with a single field "html" which contains the HTML content of the resume which can be converted to PDF using any library like puppeteer.
+                    `
+
+    const response = await ai.models.generateContent({
+
+        model: "gemini-3.1-flash-lite",
+        contents: prompt,
+        config: {
+            responseMimeType: "application/json",
+            responseJsonSchema: z.toJSONSchema(resumePDFSchema)
+        }
+
+    })
+
+
+
+}
 module.exports = generateInterviewReport

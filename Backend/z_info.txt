@@ -8,6 +8,7 @@ ran --> npm init -y ( intiate node js application )
 6. npm i zod-to-json-schema
 7.  npm i multer
 8. npm i pdf-parse
+9. npm i puppeteer
  
 
 nect the user register ( storing the user in db format ) and authentication , login api's
@@ -85,3 +86,11 @@ it is an istance
 pdfParse(req.file.buffer)
 fix -->
  (new pdfParse.PDFParse(req.file.buffer)).getText()
+
+
+Feature -
+Generate resume pdf 
+Usine pupeteer package which enables browser functions access in the the server side environment ( browser have feature to convert html to pdf ) 
+docs in - https://pptr.dev/guides/installation
+pdf gen doc - https://pptr.dev/guides/pdf-generation
+install - npm i puppeteer
