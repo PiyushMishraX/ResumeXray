@@ -120,6 +120,25 @@ async function generateInterviewReport( resume, selfDescription, jobDescription)
     
 }
 
+
+/* PDF GENERATION FEATURE    */
+async function generatePdfFromHtml(htmlContent) {
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.setContent(htmlContent, {
+        waitUntil: "networkidle0",
+    })
+
+    // pdf file data is returned in buffer format from pupeteer
+    const pdfBuffer = await page.pdf({ format: "A4"})
+
+    await browser.close() // intuitions on why this line is required
+
+    return pdfBuffer
+    
+    
+}
+
 async function generateResumePdf({resume, selfDescription, jobDescription}) {
     // we need to generate html through ai  and with the html and puppeteer we will generate pdf
     
@@ -141,10 +160,16 @@ async function generateResumePdf({resume, selfDescription, jobDescription}) {
         contents: prompt,
         config: {
             responseMimeType: "application/json",
-            responseJsonSchema: z.toJSONSchema(resumePDFSchema)
+            responseJsonSchema: z.toJSONSchema(resumePdfSchema)
         }
 
     })
+
+    // return JSON.parse(response.text)
+
+    const jsonContect = JSON.parse(response.text)
+
+
 
 
 
