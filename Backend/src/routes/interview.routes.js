@@ -2,6 +2,7 @@ const express = require('express')
 const authMiddleware = require("../middlewares/auth.middleware") // to check logged in user
 const interviewController = require("../controllers/interview.controller")
 const upload = require("../middlewares/file.middleware")
+const { generateResumePdf } = require('../services/ai.service')
 
 
 const interviewRouter = express.Router()
@@ -30,6 +31,13 @@ interviewRouter.get("/report/:interviewId", authMiddleware.authUser, interviewCo
  * @access private
  */
 interviewRouter.get("/", authMiddleware.authUser, interviewController.getAllInterviewReportsController )
+
+/**
+ * @route GET /api/interview/resume/pdf
+ * @description generate rsume pdf on the basis of user self description, resume and job description.
+ * @access private
+ */
+interviewRouter.get("/resume/pdf/:interviewReportId", authMiddleware.authUser, interviewController.genrerateResumePdfController)
 
 
 module.exports = interviewRouter

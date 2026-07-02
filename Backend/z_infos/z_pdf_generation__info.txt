@@ -1,0 +1,16 @@
+res.set({
+    "Content-Type": "application/pdf",
+    "Content-Disposition": `attachment; filename=resume_${interviewReportId}.pdf`
+  })
+
+  res.sent(pdfBuffer)
+
+
+
+This code tells your server to send a PDF file to the user's computer for download.
+ It forces their browser to save the file instead of opening it on the screen.
+ A simple breakdown of what each part does:
+ Content-Type: application/pdf: This is a tag telling the browser, "What I am sending you is a PDF file.
+ "Content-Disposition: attachment; filename=resume_${interviewReportId}.pdf: This acts like a digital sticky note.
+  The word attachment tells the browser to download the file. It also names the file resume_[ID].pdf using the unique interview ID.
+  res.send(pdfBuffer): This pushes the actual raw data (pdfBuffer) of the PDF through the internet to the user.

@@ -86,7 +86,7 @@ async function getAllInterviewReportsController(req, res) {
  */
 
 async function genrerateResumePdfController(req, res) {
-  const { interviewReport } = req.params
+  const { interviewReportId } = req.params
 
   const interviewReport = await interviewReportModel.findById(interviewReportId)
 
@@ -110,7 +110,7 @@ async function genrerateResumePdfController(req, res) {
 }
 
 module.exports = {
-    generateInterviewReporPtController,
+    generateInterviewReportController,
     getInterviewReportByIdController,
     getAllInterviewReportsController,
     genrerateResumePdfController
