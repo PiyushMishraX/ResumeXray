@@ -132,7 +132,8 @@ async function generatePdfFromHtml(htmlContent) {
     // pdf file data is returned in buffer format from pupeteer
     const pdfBuffer = await page.pdf({ format: "A4"})
 
-    await browser.close() // intuitions on why this line is required
+    await browser.close() // intuitions on why this line is required 
+    // this line is to properly terminate the Chromium browser process and free up system resources. 
 
     return pdfBuffer
     
@@ -167,11 +168,13 @@ async function generateResumePdf({resume, selfDescription, jobDescription}) {
 
     // return JSON.parse(response.text)
 
-    const jsonContect = JSON.parse(response.text)
+    const jsonContent = JSON.parse(response.text)
 
 
+    const pdfBuffer = await generatePdfFromHtml(jsonContent.html)
 
+    return pdfBuffer
 
 
 }
-module.exports = generateInterviewReport
+module.exports = { generateInterviewReport, generateResumePdf }
