@@ -100,12 +100,13 @@ async function genrerateResumePdfController(req, res) {
 
   const pdfBuffer = await generateResumePdf({ resume, jobDescription, selfDescription})
 
+  // this part creates resume pdf from the html format genrated on above buffer
   res.set({
     "Content-Type": "application/pdf",
     "Content-Disposition": `attachment; filename=resume_${interviewReportId}.pdf`
   })
 
-  res.sent(pdfBuffer)
+  res.send(pdfBuffer) // send not sent
 
 }
 

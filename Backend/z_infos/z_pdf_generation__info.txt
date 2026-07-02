@@ -14,3 +14,11 @@ This code tells your server to send a PDF file to the user's computer for downlo
  "Content-Disposition: attachment; filename=resume_${interviewReportId}.pdf: This acts like a digital sticky note.
   The word attachment tells the browser to download the file. It also names the file resume_[ID].pdf using the unique interview ID.
   res.send(pdfBuffer): This pushes the actual raw data (pdfBuffer) of the PDF through the internet to the user.
+
+
+  GET OR POST MEHTOD ( USING POST BEACUSE )-
+  Large Payloads: The user is submitting a massive amount of data (like a complex, multi-page form) that the server must process to dynamically generate the PDF on the fly. URL length limits on GET requests will break if your input parameters are too large.
+  Highly Sensitive Input Data: If the user must pass sensitive information (like credit card details or deep personal metrics) to generate the PDF, GET will leak that data into the browser history, server logs, and URL bar. POST hides this information inside the request body
+
+  GET IS beetter when -
+  Static Files: The PDF already exists on your server (e.g., an eBook or product manual).Public Content: The file can be accessed via a shareable link or bookmarked by users.Simple Filtering: You only need a few URL query parameters to identify the file (e.g., ?reportId=123).Performance: GET requests can be easily cached by browsers or CDNs, drastically reducing server load for popular downloads.

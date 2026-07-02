@@ -143,7 +143,7 @@ async function generatePdfFromHtml(htmlContent) {
 async function generateResumePdf({resume, selfDescription, jobDescription}) {
     // we need to generate html through ai  and with the html and puppeteer we will generate pdf
     
-    const resumePdfSchema = z.onject({
+    const resumePdfSchema = z.object({
         html: z.string().describe("The HTML content of th resume which can be converted to PDF using a library like puppeteer ")
     })
 
